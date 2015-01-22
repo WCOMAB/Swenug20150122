@@ -117,9 +117,8 @@ Task("Publish-MyGet")
     if(string.IsNullOrEmpty(apiKey)) {
         throw new InvalidOperationException("Could not resolve MyGet source.");
     }
-
     // Get the path to the package.
-    var package = nugetRoot + assemblyId + semVersion + ".nupkg";
+    var package = nugetRoot + assemblyId + "." + semVersion + ".nupkg";
 
     // Push the package.
     NuGetPush(package, new NuGetPushSettings {
