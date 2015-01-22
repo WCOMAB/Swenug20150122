@@ -14,7 +14,7 @@ var solutionDirs    = solutions.Select(solution => solution.GetDirectory());
 
 var isLocalBuild        = !AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
-var version             = "0.0.0.1";
+var version             = "0.0.0.2";
 var semVersion          = isLocalBuild ? version : (version + string.Concat("-build-", AppVeyor.Environment.Build.Number));
 var assemblyId          = "SweNug20150222";
 var binDir              = "./src/Swenug20150222/bin";
