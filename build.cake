@@ -101,8 +101,36 @@ Task("Create-NuGet-Package")
     );
 });
 
+Task("Publish-MyGet")
+    .IsDependentOn("Create-NuGet-Package")
+    .WithCriteria(() => !isLocalBuild)
+    .WithCriteria(() => !isPullRequest) 
+    .Does(() =>
+{
+    // Resolve the API key.
+    var apiKey = EnvironmentVariable("MYGET_API_KEY");
+    if(string.IsNullOrEmpty(apiKey)) {
+        throw new InvalidOperationException("Could not resolve MyGet API key.");
+    }
+
+    var source = EnvironmentVariable("MYGET_SOURCE");
+    if(string.IsNullOrEmpty(apiKey)) {
+        throw new InvalidOperationException("Could not resolve MyGet source.");
+    }
+
+    // Get the path to the package.
+    var package = nugetRoot + assemblyId + semVersion + ".nupkg";
+
+    // Push the package.
+    NuGetPush(package, new NuGetPushSettings {
+        Source = source,
+        ApiKey = apiKey
+    }); 
+});
+
+
 Task("Default")
-    .IsDependentOn("Create-NuGet-Package");
+    .IsDependentOn("Publish-MyGet");
 
 ///////////////////////////////////////////////////////////////////////////////
 // EXECUTION
