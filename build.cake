@@ -16,8 +16,8 @@ var isLocalBuild        = !AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
 var version             = "0.0.0.2";
 var semVersion          = isLocalBuild ? version : (version + string.Concat("-build-", AppVeyor.Environment.Build.Number));
-var assemblyId          = "SweNug20150222";
-var binDir              = "./src/Swenug20150222/bin";
+var assemblyId          = "SweNug20150122";
+var binDir              = "./src/" + assemblyId +"/bin";
 var nugetRoot           = "./nuget/";
 
 var nuGetPackSettings   = new NuGetPackSettings { 
@@ -96,7 +96,7 @@ Task("Create-NuGet-Package")
 	CreateDirectory(nugetRoot);
     }
     NuGetPack(
-        "./src/Swenug20150222/Swenug20150222.csproj.nuspec",
+        "./nuspec/" + assemblyId + ".nuspec",
         nuGetPackSettings
     );
 });

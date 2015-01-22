@@ -7,8 +7,8 @@
     <ProjectGuid>{407739C9-D97B-4A04-9A3E-5DC526EB16E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Swenug20150222</RootNamespace>
-    <AssemblyName>Swenug20150222</AssemblyName>
+    <RootNamespace>Swenug20150122</RootNamespace>
+    <AssemblyName>Swenug20150122</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
